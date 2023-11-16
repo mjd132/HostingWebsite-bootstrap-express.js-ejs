@@ -12,11 +12,12 @@ const database = require("./database");
 const authRouter = require("./authRouter");
 const userRouter = require("./userRouter");
 const homeRouter = require("./homeRouter");
+const adminRouter = require("./adminRouter");
 // EJS setup
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views/pages");
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 // cookie and session setup
 app.use(cookieParser());
@@ -42,6 +43,9 @@ app.use((err, req, res, next) => {
 app.use(userRouter);
 app.use(authRouter);
 app.use(homeRouter);
+// app.use(adminRouter.contentRouter);
+// app.use(adminRouter.planRouter);
+app.use(adminRouter.router);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
