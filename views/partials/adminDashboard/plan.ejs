@@ -1,17 +1,20 @@
+<form action="/admin/plan" method="post">
+  <input name="name" id="planVPS" type="text" class="form-control" />
+  <input name="cpu" id="cpuVPS" type="text" class="form-control" />
+  <input name="storage" id="planVPS" type="text" class="form-control" />
+  <input name="ram" id="ramVPS" type="number" class="form-control" />
+  <input name="price" id="priceVPS" type="number" class="form-control" />
+  <input name="traffic" id="timeleft" type="text" class="form-control" />
+  <input name="database" id="timeleft" type="text" class="form-control" />
+  <input name="space" id="timeleft" type="text" class="form-control" />
+  <input name="addon" id="timeleft" type="text" class="form-control" />
+  <input name="country" id="timeleft" type="text" class="form-control" />
+  <input name="categoryName" id="timeleft" type="text" class="form-control" />
 
-  <form action="" method="post">
-    <input name="paln" id="planVPS" type="text" />
-    <input name="cpu" id="cpuVPS" type="text" />
-    <input name="storage" id="planVPS" type="text" />
-    <input name="ram" id="ramVPS" type="text" />
-    <input name="price" id="priceVPS" type="number" />
-    <input name="timeleftVPS" id="timeleft" type="text" />
-    <button type="submit">Buy</button>
+  <select class="form-select" aria-label="Default select example">
+    <option selected value="vps">vps</option>
+    <option value="host">host</option>
+  </select>
 
-    <input name="paln" id="planHOST" type="text" />
-    <input name="traffic" id="trafficHOST" type="text" />
-    <input name="database" id="databaseHOST" type="number" />
-    <input name="space" id=" spaceHOST" type="text" />
-    <input name="price" id="priceVPS" type="number" />
-    <button type="submit">Buy</button>
+  <button type="submit">ADD</button>
 </form>
