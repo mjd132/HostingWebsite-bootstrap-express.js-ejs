@@ -3,10 +3,14 @@
   <hr />
   <div class="mt-4">
     <h5>Add Admin</h5>
-    <form action="" method="post" class="d-flex w-md-50 align-items-center">
+    <form
+      action="/admin/role"
+      method="post"
+      class="d-flex w-md-50 align-items-center"
+    >
       <div><p>Email:</p></div>
       <div class="mx-2">
-        <input type="text" class="form-control" />
+        <input type="text" name="email" class="form-control" />
       </div>
 
       <div
@@ -17,9 +21,10 @@
         <input
           type="radio"
           class="btn-check"
-          name="btnradio"
+          name="role"
           id="btnradio1"
           autocomplete="off"
+          value="user"
           checked
         />
         <label class="btn btn-outline-primary" for="btnradio1">User</label>
@@ -27,16 +32,54 @@
         <input
           type="radio"
           class="btn-check"
-          name="btnradio"
+          name="role"
           id="btnradio2"
           autocomplete="off"
+          value="admin"
         />
         <label class="btn btn-outline-primary" for="btnradio2">Admin</label>
       </div>
+      <button type="submit" class="btn btn-outline-secondary ms-3">Save</button>
     </form>
   </div>
   <hr />
   <div class="mt-2">
     <h5>Admins:</h5>
+    <% if (admins.length > 0) { %>
+
+    <ul class="list-unstyled">
+      <% admins.forEach(admin => { %>
+      <li class="border-bottom border-1 border-primary mb-1 p-2">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <p class="mb-1">Name: <%= admin.name %></p>
+            <p>Email: <%= admin.email %></p>
+          </div>
+          <button
+            class="btn btn-danger"
+            onclick="deleteAdmin('<%= admin.email %>')"
+          >
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>No admins found.</p>
+    <% } %>
   </div>
 </div>
+<script>
+  function deleteAdmin(email) {
+    // Assuming you use fetch API for the AJAX request
+    fetch("/admin/role", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, role: "user" }),
+    });
+    window.location.href = "/admin/adminManager";
+  }
+</script>

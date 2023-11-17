@@ -26,9 +26,9 @@ router.post("/admin/role", async (req, res) => {
 
   await User.findOneAndUpdate(
     { email: body.email },
-    { $set: { role: req.body.role } }
-  ).then((r) => {
-    res.send("ok");
+    { $set: { role: body.role } }
+  ).then(() => {
+    res.redirect("/admin/adminManager");
   });
 });
 router.route("/admin/plan").post(async (req, res) => {
@@ -42,9 +42,28 @@ router.route("/admin/plan").post(async (req, res) => {
   }
 });
 
-router.route(["/admin/:section", "/admin"]).get((req, res) => {
+router.route(["/admin/:section", "/admin"]).get(async (req, res) => {
   const user = req.session.user;
   const section = req.params.section;
+  if (section === "plan") {
+    const plans = await Plan.find().then((plans) => {
+      return plans;
+    });
+
+    return res.render("adminDashboard", {
+      user,
+      section: section,
+      plans: plans,
+    });
+  }
+  if (section === "adminManager") {
+    const admins = await User.find({ role: "admin" });
+    return res.render("adminDashboard", {
+      user,
+      section: section,
+      admins: admins,
+    });
+  }
   if (section) res.render("adminDashboard", { user, section: section });
   else res.render("adminDashboard", { user, section: "main" });
 });
