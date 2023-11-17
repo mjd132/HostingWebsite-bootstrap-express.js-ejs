@@ -1,0 +1,85 @@
+<div class="mt-4 row">
+  <form action="/admin/plan" method="post">
+
+    <div class="form-group text-center  row p-2">
+      <label for="inputPassword" class="col-sm-2 col-form-label ">Name :</label>
+      <div class="col-sm-10 ">
+        <input
+          class="border-primary rounded-3"
+          name="planVPS"
+          id="planVPS"
+          type="text"
+        />
+      </div>
+
+      <div class="form-group row ">
+        <label for="inputPassword" class="col-sm-2 col-form-label">CPU :</label>
+        <div class="col-sm-10">
+          <input
+            type="range"
+            id="cpuVPS"
+            name="cpuVPS"
+            min="1"
+            max="32"
+            value="16  "
+            oninput="updateOutput(this.value)"
+          />
+          <output
+            class="border border-primary text-primary border-1 rounded-circle p-2 m-1 fw-bold"
+            id="outputcpuVPS"
+          >
+            16
+          </output>
+        </div>
+      </div>
+      <div class="form-group row p-2">
+        <label for="inputPassword" class="col-sm-2 col-form-label">CPU :</label>
+        <div class="col-sm-10">
+          <input
+            type="range"
+            id="cpuVPS"
+            name="cpuVPS"
+            min="1"
+            max="32"
+            value="16  "
+            oninput="updateOutput(this.value)"
+          />
+          <output
+            class="border border-primary text-primary border-1 rounded-circle p-2 m-1 fw-bold"
+            id="outputcpuVPS"
+          >
+            16
+          </output>
+        </div>
+      </div>
+
+      <input name="storage" id="planVPS" type="text" class="form-control" />
+      <input name="ram" id="ramVPS" type="number" class="form-control" />
+      <input name="price" id="priceVPS" type="number" class="form-control" />
+      <input name="traffic" id="timeleft" type="text" class="form-control" />
+      <input name="database" id="timeleft" type="text" class="form-control" />
+      <input name="space" id="timeleft" type="text" class="form-control" />
+      <input name="addon" id="timeleft" type="text" class="form-control" />
+      <input name="country" id="timeleft" type="text" class="form-control" />
+      <input
+        name="categoryName"
+        id="timeleft"
+        type="text"
+        class="form-control"
+      />
+
+      <select class="form-select" aria-label="Default select example">
+        <option selected value="vps">vps</option>
+        <option value="host">host</option>
+      </select>
+    </div>
+
+    <button type="submit">ADD</button>
+  </form>
+</div>
+
+<script>
+  function updateOutput(value) {
+    document.getElementById("outputcpuVPS").textContent = value;
+  }
+</script>
