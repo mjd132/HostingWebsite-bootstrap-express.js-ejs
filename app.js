@@ -18,6 +18,7 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views/pages");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static("public"));
 // cookie and session setup
 app.use(cookieParser());
